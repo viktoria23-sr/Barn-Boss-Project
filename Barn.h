@@ -6,9 +6,11 @@
 class Barn
 {
 private:
-	std::vector <std::pair<PossibleProducts, unsigned long>> myProducts;
+	std::map<PossibleProducts, unsigned> myProducts;
 
 public:
-	void addProduct(PossibleProducts product, unsigned long quantity);
+	void addProduct(PossibleProducts product, unsigned quantity);
+	void removeProduct(PossibleProducts product, unsigned quantity);
+	bool isAvailable(PossibleProducts product, unsigned quantity);
 };
 
