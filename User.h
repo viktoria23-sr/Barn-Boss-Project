@@ -10,9 +10,9 @@ protected:
 	std::string password;
 
 public:
-	bool isAccuratePassword(std::string password) const;
+	bool isAccuratePassword(const std::string& password) const;
 	void logout();
-	void changePassword(std::string oldPassword, std::string newPassword);
+	void changePassword(const std::string& oldPassword, const std::string& newPassword);
 	virtual void profileInfo() const; //=0 ???
 
 	std::string getId() const;
