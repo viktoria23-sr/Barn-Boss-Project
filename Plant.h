@@ -16,5 +16,6 @@ struct Plant
 		}
 	}
 
+	void increaseCurrentCycle();
 };
 
