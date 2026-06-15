@@ -15,5 +15,7 @@ struct Animal
 			throw std::invalid_argument("An animal should be a chicken or a cow!");
 		}
 	}
+
+    void increaseCurrentCycle();
 };
 
