@@ -1,24 +1,38 @@
 #pragma once
 #include <vector>
-#include <string>
+#include <variant>
+#include "Plant.h"
+#include "Animal.h"
+#include "PossibleProducts.h"
+#include "Barn.h"
 
 class Farm
 {
 private:
-	std::vector <std::string> plants;
-	std::vector <std::string> animals;
+	std::vector <Plant> plants;
+	std::vector <Animal> animals;
 	size_t croplandCapacity = 3;
 	size_t farmlandCapacity = 3;
 
 public:
 	Farm() = default;
-	Farm(std::vector<std::string>& plants_, std::vector<std::string>& animals_, size_t croplandCapacity_,
-		size_t farmlandCapacity_) : plants(plants_), animals(animals_), croplandCapacity(croplandCapacity_),
-		farmlandCapacity(farmlandCapacity_) { }
 
-	void setCroplandCapacity(size_t cropsCapacity);
+	void incrementCroplandCapacity();
 	size_t getCroplandCapacity() const;
-	void setFarmlandCapacity(size_t animalsCapacity);
+	void incrementFarmlandCapacity();
 	size_t getFarmlandCapacity() const;
+
+	std::vector<Plant>& getPlants();
+	std::vector<Animal>& getAnimals(); //сега вече не знам дали са ми нужни тези гетъри
+	
+	void pushPlant(const Plant& plant);
+	void pushAnimal(const Animal& animal);
+	void removePlant(const Plant& plant);
+	void removeAnimal(const Animal& animal);
+	
+	bool isSeedSowed(PossibleProducts seedType, Barn& playerBarn);
+	bool isAnimalAdded(PossibleProducts animalType, Barn& playerBarn);
+	void advanceCycle();
+	void printFarm() const;
 };
 
