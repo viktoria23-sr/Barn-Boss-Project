@@ -1,6 +1,7 @@
 #pragma once
-#include <vector>
+#include <map>
 #include <utility>
+#include <print>
 #include "PossibleProducts.h"
 
 class Barn
@@ -12,5 +13,6 @@ public:
 	void addProduct(PossibleProducts product, unsigned quantity);
 	void removeProduct(PossibleProducts product, unsigned quantity);
 	bool isAvailable(PossibleProducts product, unsigned quantity);
+	void printBarn() const;
 };
 
