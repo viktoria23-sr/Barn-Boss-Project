@@ -17,6 +17,10 @@ public:
 	}
 
 	unsigned getQuantity() const;
+	void increaseQuantity(unsigned amount);
+	void reduceQuantity(unsigned amount);
+
 	double getPrice() const;
+	void setPrice(double price_);
 };
 
