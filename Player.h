@@ -31,6 +31,12 @@ public:
 	void sellItem(std::string productId, std::string quantity);
 	void showTaskBoard();
 	void completeTask(const std::string& taskId);
+	void completeTurn();
+
+	void profileInfo() const override;
+	void save(std::ostream& out) const override;
+	void load(std::istream& in) override;
+	std::string getRole() const override;
 
 	std::partial_ordering operator <=> (const Player& other) const
 	{
@@ -44,7 +50,7 @@ public:
 			return cmp;
 		}
 
-		return id <=> other.getId(); //мога да го напиша просто така??
+		return id <=> other.getId(); //Г¬Г®ГЈГ  Г¤Г  ГЈГ® Г­Г ГЇГЁГёГ  ГЇГ°Г®Г±ГІГ® ГІГ ГЄГ ??
 	}
 
 };
