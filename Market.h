@@ -1,18 +1,22 @@
 #pragma once
-#include <tuple>
-#include <vector>
+#include <iostream>
+#include "MarketItem.h"
+#include <map>
 #include "PossibleProducts.h"
 
 class Market
 {
 private:
-	std::vector < std::tuple < PossibleProducts, unsigned long, size_t, bool >> marketCatalogue;
-
-	/*unsigned long quantity;
-	size_t price;
-	bool isAvailable = true;*/
+	std::map <PossibleProducts, MarketItem> marketCatalogue;
 
 public:
-	//Как да го създам началното състояние на Market, с обекти ли???
+	Market(const Market& other) = delete;
+	Market& operator=(const Market& other) = delete;
+
+	static Market& getInstance();
+
+	void printCatalogue() const;
+	MarketItem& getItem(PossibleProducts product);
+	const MarketItem& getItem(PossibleProducts product) const;
 };
 
