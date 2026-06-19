@@ -2,7 +2,7 @@
 
 bool User::isAccuratePassword(const std::string& password_) const
 {
-    if (password_ == "   " || password_.length() < 3)
+    if (password_.length() < 3)
     {
         return false;
     }
