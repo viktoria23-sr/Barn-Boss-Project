@@ -19,8 +19,7 @@ void User::changePassword(const std::string& oldPassword, const std::string& new
             std::println("The new password is the same as the old. Choose another one!");
             return;
         }
-
-        password.resize(newPassword.length());
+    
         password = newPassword;
     }
 }
