@@ -1,5 +1,4 @@
 #include "Animal.h"
-#include "Plant.h"
 
 Animal::Animal(PossibleProducts type_) : type(type_)
 {
