@@ -92,14 +92,15 @@ bool Farm::isSeedSowed(PossibleProducts seedType, Barn& playerBarn)
 
 	if (playerBarn.isAvailable(seedType, 1))
 	{
+		playerBarn.removeProduct(seedType, 1);
+		plants.push_back(Plant(seedType));
+		std::println("Plants planted successfully!");
 		return true;
 	}
 
-	else
-	{
+	
 		std::println("Not enough seeds in the barn.");
 		return false;
-	}
 }
 
 bool Farm::isAnimalAdded(PossibleProducts animalType, Barn& playerBarn)
@@ -118,14 +119,14 @@ bool Farm::isAnimalAdded(PossibleProducts animalType, Barn& playerBarn)
 
 	if (playerBarn.isAvailable(animalType, 1))
 	{
+		playerBarn.removeProduct(animalType, 1);
+        animals.push_back(Animal(animalType));
+        std::println("Animal added successfully!");
 		return true;
 	}
 
-	else
-	{
-		std::println("Not enough animals in the barn.");
-		return false;
-	}
+	std::println("Not enough animals in the barn.");
+	return false;
 }
 
 void Farm::advanceCycle()
