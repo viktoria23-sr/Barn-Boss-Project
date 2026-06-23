@@ -9,6 +9,8 @@ protected:
 	std::string username;
 	std::string password;
 
+	static constexpr int MIN_PASSWORD_LENGTH = 3;
+
 public:
 	User(const std::string& id_, const std::string& username_, const std::string& password_);
 	
