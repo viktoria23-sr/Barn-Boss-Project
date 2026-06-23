@@ -266,10 +266,10 @@ void Player::completeTask(size_t taskId)
 	balance += targetTask->getRewardBalance();
 	score += targetTask->getRewardScore();
 
-	taskBoard.removeTaskById(taskId);
 	std::println("Task {} completed successfully! Received {} money and {} score.",
 		taskId, targetTask->getRewardBalance(), targetTask->getRewardScore());
-
+	
+	taskBoard.removeTaskById(taskId);
 	this->completeTurn();
 }
 
