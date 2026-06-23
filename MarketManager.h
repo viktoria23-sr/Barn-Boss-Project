@@ -7,6 +7,8 @@ class MarketManager : public User
 private:
 	static bool hasInstance;
 
+	static constexpr size_t MIN_PRODUCT_ID = 1;
+	static constexpr size_t MAX_PRODUCT_ID = 8;
 public:
 	MarketManager() = default;
 	MarketManager(const std::string& username_, const std::string& password_);
