@@ -23,7 +23,7 @@ public:
 	size_t getFarmlandCapacity() const;
 
 	std::vector<Plant>& getPlants();
-	std::vector<Animal>& getAnimals(); //сега вече не знам дали са ми нужни тези гетъри
+	std::vector<Animal>& getAnimals();
 	
 	void pushPlant(const Plant& plant);
 	void pushAnimal(const Animal& animal);
