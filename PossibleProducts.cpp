@@ -12,7 +12,7 @@ PossibleProducts getProductType(size_t productId)
          case 6: return PossibleProducts::Corn;
          case 7: return PossibleProducts::Egg;
          case 8: return PossibleProducts::Milk;
-         //default???
+         default : throw std::invalid_argument("Invalid product type!");
     }
 }
 
@@ -57,7 +57,7 @@ PossibleProducts getProductFromSeed(PossibleProducts seed)
     case PossibleProducts::CornSeed:
         return PossibleProducts::Corn;
     default:
-        //???
+        throw std::invalid_argument("Invalid product type!");
     }
 }
 
@@ -70,7 +70,7 @@ PossibleProducts getProductFromAnimal(PossibleProducts animal)
     case PossibleProducts::Cow:
         return PossibleProducts::Milk; 
     default:
-        //???
+        throw std::invalid_argument("Invalid product type!");
     }
 }
 
