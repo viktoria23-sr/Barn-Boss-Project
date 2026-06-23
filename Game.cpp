@@ -351,14 +351,14 @@ void Game::executeLogout()
 
 void Game::showScoreboard() const
 {
-    std::vector<Player> playersOnly;
+     std::vector<const Player*> playersOnly;
 
     for (const auto& userPtr : users)
     {
         if (userPtr->getRole() == "Player")
         {
             const Player* playerPtr = static_cast<const Player*>(userPtr.get());
-            playersOnly.push_back(*playerPtr);
+            playersOnly.push_back(playerPtr);
         }
     }
 
