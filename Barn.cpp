@@ -58,3 +58,20 @@ bool Barn::isAvailable(PossibleProducts product, unsigned quantity)
 	
 	return it->second >= quantity;
 }
+
+void Barn::printBarn() const
+{
+	if (myProducts.empty())
+	{
+		std::println("The barn is currently empty.");
+		return;
+	}
+
+	std::println("Barn products: ");
+
+	for (const auto& [product, quantity]: myProducts)
+	{
+		std::println("ProductType: {}, Quantity: {}", toString(product), quantity);
+	}
+}
+
