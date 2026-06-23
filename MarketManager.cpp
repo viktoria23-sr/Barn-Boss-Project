@@ -3,7 +3,7 @@
 bool MarketManager::hasInstance = false;
 
 MarketManager::MarketManager(const std::string& username_, const std::string& password_) :
-    User("M_MANAGER", username_, password_)
+    User("MarketManager", username_, password_)
 {
     if (hasInstance)
     {
