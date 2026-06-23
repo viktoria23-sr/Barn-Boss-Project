@@ -110,6 +110,8 @@ void Player::addAnimal(size_t animalId)
 
 void Player::harvest()
 {
+	bool hasHarvestedAnything = false;
+	
 	auto& plants = farm.getPlants();
 
 	for (int i = (int)plants.size() - 1; i >= 0; i--)
@@ -120,6 +122,7 @@ void Player::harvest()
 
 			barn.addProduct(finalProduct, 1);
 			plants.erase(plants.begin() + i);
+			hasHarvestedAnything = true;
 		}
 	}
 
@@ -132,10 +135,19 @@ void Player::harvest()
 
 			barn.addProduct(finalProduct, 1);
 			animals.erase(animals.begin() + i);
+			hasHarvestedAnything = true;
 		}
 	}
 
-	farm.advanceCycle();
+	if (hasHarvestedAnything)
+	{
+		std::println("Harvest completed!");
+		this->completeTurn();
+	}
+	else
+	{
+		std::println("Nothing is ready to be harvested right now.");
+	}
 }
 
 void Player::openMarketCatalog()
