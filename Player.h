@@ -13,9 +13,14 @@ private:
 	Farm farm;
 	double balance = 100;
 	size_t score = 0;
+	size_t currentTurn = 0;
+
+	static constexpr int BUYABLE_PRODUCTS = 4;
+	static constexpr int SELLABLE_PRODUCTS = 4;
 
 public:
-
+	Player(const std::string& id_, const std::string& username_, const std::string& password_,
+	double balance, size_t score_);
 	double checkBalance() const;
 	size_t checkScore() const;
 	void checkBarn() const;
@@ -23,14 +28,14 @@ public:
 	size_t freeSlots(const std::vector<std::string>& v, size_t capacity);
 	void expandCropland();
 	void expandFarmland();
-	void sowPlant(std::string seedId);
-	void addAnimal(std::string animalId);
+	void sowPlant(size_t seedId);
+	void addAnimal(size_t animalId);
 	void harvest();
 	void openMarketCatalog();
-	void buyItem(std::string productId, size_t quantity);
-	void sellItem(std::string productId, std::string quantity);
+	void buyItem(size_t productId, unsigned quantity);
+	void sellItem(size_t productId, unsigned quantity);
 	void showTaskBoard();
-	void completeTask(const std::string& taskId);
+	void completeTask(size_t taskId);
 	void completeTurn();
 
 	void profileInfo() const override;
@@ -40,17 +45,19 @@ public:
 
 	std::partial_ordering operator <=> (const Player& other) const
 	{
-		if (auto cmp = score <=> other.checkScore(); cmp != 0)
+		if (auto cmp = other.score <=> score; cmp != 0)
 		{
 			return cmp;
 		}
 
-		if (auto cmp = balance <=> other.checkBalance(); cmp != 0)
+		if (auto cmp = other.balance <=> balance; cmp != 0)
 		{
 			return cmp;
 		}
 
-		return id <=> other.getId(); //ìîãà äà ãî íàïèøà ïðîñòî òàêà??
+		int myId = std::stoi(id);
+		int otherId = std::stoi(other.id);
+		return myId <=> otherId;
 	}
 
 };
