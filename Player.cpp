@@ -279,7 +279,7 @@ void Player::profileInfo() const
 	std::println("ID: {}", id);
 	std::println("Username: {}", username);
 	std::println("Type: Player");
-	std::println("Score: ", score);
+	std::println("Score: {}", score);
 	std::println("Balance: {}", balance);
 }
 
