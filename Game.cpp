@@ -139,7 +139,6 @@ void Game::start()
          else
          {
              checkFile.close();
-             std::ofstream clearFile(filename, std::ios::trunc);
              std::println("Starting a fresh new game...");
          }
      }
