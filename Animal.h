@@ -8,13 +8,7 @@ struct Animal
 	unsigned currentCycle = 0;
 	unsigned requiredCycle;
 
-	Animal(PossibleProducts type_, unsigned requiredCycle_) : type(type_), requiredCycle(requiredCycle_)
-	{
-		if (type != PossibleProducts::Cow && type != PossibleProducts::Chicken)
-		{
-			throw std::invalid_argument("An animal should be a chicken or a cow!");
-		}
-	}
+	Animal(PossibleProducts type_);
 
     void increaseCurrentCycle();
 };
