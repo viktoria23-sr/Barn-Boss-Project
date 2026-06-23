@@ -3,7 +3,7 @@
 User::User(const std::string& id_, const std::string& username_, const std::string& password_) :
     id(id_), username(username_), password(password_) { }
 
-bool User::isAccuratePassword(const std::string& password_) const
+bool User::isAccuratePassword(const std::string& password_)
 {
     if (password_.length() < MIN_PASSWORD_LENGTH)
     {
