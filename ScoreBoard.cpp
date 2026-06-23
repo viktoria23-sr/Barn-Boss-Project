@@ -1,6 +1,6 @@
 #include "ScoreBoard.h"
 
-void ScoreBoard::showScoreBoard(const std::vector<Player>& globalPlayers)
+void ScoreBoard::showScoreBoard(const std::vector<const Player*>& globalPlayers)
 {
 	std::println("        || SCOREBOARD ||        ");
 
@@ -16,7 +16,7 @@ void ScoreBoard::showScoreBoard(const std::vector<Player>& globalPlayers)
 	{
 		for (size_t j = 0; j < sortedPlayers.size() - i - 1; j++)
 		{
-			if (sortedPlayers[j] < sortedPlayers[j + 1])
+			if (sortedPlayers[j] -> checkScore() < sortedPlayers[j + 1] -> checkScore()
 			{
 				std::swap(sortedPlayers[j], sortedPlayers[j + 1]);
 			}
@@ -25,13 +25,13 @@ void ScoreBoard::showScoreBoard(const std::vector<Player>& globalPlayers)
 
 	for (size_t i = 0; i < sortedPlayers.size(); ++i)
 	{
-		const auto& player = sortedPlayers[i];
+		const auto* player = sortedPlayers[i];
 		
 		std::println("{}. {} | Score: {} | Balance: {}",
 			i + 1,
-			player.getUsername(),
-			player.checkScore(),
-			player.checkBalance());
+			player -> getUsername(),
+			player -> checkScore(),
+			player -> checkBalance());
 	}
 }
 
