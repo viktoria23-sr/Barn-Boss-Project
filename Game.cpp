@@ -11,7 +11,7 @@
 #include "ExitCommand.h"
 #include "ExpandCroplandCommand.h"
 #include "ExpandFarmlandCommand.h"
-#include "HarVestCommand.h"
+#include "HarvestCommand.h"
 #include "LoginCommand.h"
 #include "LogoutCommand.h"
 #include "PrintBarnCommand.h"
