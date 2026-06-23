@@ -5,23 +5,25 @@ unsigned MarketItem::getQuantity() const
 	return quantity;
 }
 
-void MarketItem::setPrice(double price_)
-{
-	if (price_ < 0)
-	{
-		throw std::invalid_argument("Price cannot be a negative number!");
-	}
+MarketItem::MarketItem(unsigned quantity_, unsigned price_) : quantity(quantity_), price(price_) { }
 
+void MarketItem::setPrice(unsigned price_)
+{
 	price = price_;
 }
 
-double MarketItem::getPrice() const
+unsigned MarketItem::getPrice() const
 {
 	return price;
 }
 
 void MarketItem::reduceQuantity(unsigned amount)
 {
+	if (amount > quantity)
+	{
+        throw std::invalid_argument("Error: Cannot reduce quantity below zero!");
+    }
+    
 	quantity -= amount;
 }
 
