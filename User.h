@@ -14,11 +14,11 @@ protected:
 public:
 	User(const std::string& id_, const std::string& username_, const std::string& password_);
 	
-	bool isAccuratePassword(const std::string& password) const;
 	void logout();
 	void changePassword(const std::string& oldPassword, const std::string& newPassword);
 	virtual void profileInfo() const = 0;
 	virtual ~User() = default;
+	static bool isAccuratePassword(const std::string& password);
 
 	const std::string& getId() const;
 	const std::string& getUsername() const;
