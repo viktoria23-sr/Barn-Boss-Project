@@ -26,7 +26,7 @@ void MarketManager::openMarketCatalog() const
 
 void MarketManager::restock(size_t productId, unsigned quantity)
 {
-    if (productId < 1 || productId > 8) //магически числа???
+    if (productId < MIN_PRODUCT_ID || productId > MAX_PRODUCT_ID)
     {
         throw std::invalid_argument("Error: Invalid product ID!");
         return;
@@ -41,7 +41,7 @@ void MarketManager::restock(size_t productId, unsigned quantity)
 
 void MarketManager::changePrice(size_t productId, unsigned newPrice)
 {
-    if (productId < 1 || productId > 8) //магически числа???
+    if (productId < MIN_PRODUCT_ID || productId > MAX_PRODUCT_ID)
     {
         throw std::invalid_argument("Error: Invalid product ID!");
         return;
