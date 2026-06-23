@@ -14,5 +14,11 @@ void RegisterCommand::execute(const std::vector<std::string>& args)
     std::string password = args[1];
     std::string role = args[2];
 
+    if (!User::isAccuratePassword(password))
+    {
+         std::println("Error: Password is too short!");
+         return;
+    }
+    
     game.executeRegister(role, username, password);
 }
