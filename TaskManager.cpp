@@ -4,7 +4,7 @@
 bool TaskManager::hasInstance = false;
 
 TaskManager::TaskManager(const std::string& username_, const std::string& password_) : 
-    User("T_MANAGER", username_, password_)
+    User("TaskManager", username_, password_)
 {
     if (hasInstance)
     {
@@ -32,7 +32,7 @@ void TaskManager::showTasks()
         return;
     }
 
-    for (const auto& task : currentTasks)
+    for (const auto& [id, task] : currentTasks)
     {
         std::println("{}. Deliver {} {} -> Reward: {} Balance, {} Score",
             task.getId(),
@@ -46,8 +46,14 @@ void TaskManager::showTasks()
 void TaskManager::addTask(PossibleProducts requiredProduct, unsigned quantity, size_t rewardBalance, size_t rewardScore)
 {
     TaskBoard& taskBoard = TaskBoard::getInstance();
+    const auto& tasks = taskBoard.getTasks();
 
-    size_t newId = taskBoard.getTasks().size() + 1;
+    size_t newId = 1;
+
+    if (!tasks.empty())
+    {
+        newId = tasks.rbegin()->first + 1;
+    }
     Task newTask(newId, requiredProduct, quantity, rewardBalance, rewardScore);
     taskBoard.addTask(newTask);
 
@@ -57,29 +63,17 @@ void TaskManager::addTask(PossibleProducts requiredProduct, unsigned quantity, s
 void TaskManager::removeTask(size_t taskId)
 {
     TaskBoard& taskBoard = TaskBoard::getInstance();
-    int targetIndex = -1; //setting an initial value -1 until we find the needed index
 
-    const auto& currentTasks = taskBoard.getTasks();
-
-    for (size_t i = 0; i < currentTasks.size(); i++)
+    try
     {
-        if (currentTasks[i].getId() == taskId)
-        {
-            targetIndex = i;
-            break;
-        }
-    }
-
-    if (targetIndex != -1)
-    {
-        taskBoard.removeTaskAt(targetIndex);
+        taskBoard.removeTaskById(taskId);
         std::println("Task with ID {} removed successfully!", taskId);
     }
-
-    else
+    catch (const std::invalid_argument& e)
     {
         std::println("Task with ID {} not found.", taskId);
     }
+
 }
 
 void TaskManager::profileInfo() const
