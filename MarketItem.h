@@ -5,22 +5,16 @@ class MarketItem
 {
 private:
 	unsigned quantity;
-	double price;
+	unsigned price;
 
 public:
-	MarketItem(unsigned quantity_, double price_) : quantity(quantity_), price(price_) 
-	{	
-		if (price < 0)
-		{
-			throw std::invalid_argument("Price cannot be a negative number!");
-		}
-	}
+	MarketItem(unsigned quantity_, unsigned price_);
 
 	unsigned getQuantity() const;
 	void increaseQuantity(unsigned amount);
 	void reduceQuantity(unsigned amount);
 
-	double getPrice() const;
+	unsigned getPrice() const;
 	void setPrice(double price_);
 };
 
