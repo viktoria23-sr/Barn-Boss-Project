@@ -9,6 +9,8 @@ class Market
 private:
 	std::map <PossibleProducts, MarketItem> marketCatalogue;
 
+	Market();
+
 public:
 	Market(const Market& other) = delete;
 	Market& operator=(const Market& other) = delete;
