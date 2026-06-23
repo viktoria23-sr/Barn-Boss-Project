@@ -6,6 +6,6 @@
 class ScoreBoard
 {
 public:
-	void showScoreBoard(const std::vector<Player>& globalPlayers);
+	void showScoreBoard(const std::vector<const Player*>& globalPlayers);
 };
 
