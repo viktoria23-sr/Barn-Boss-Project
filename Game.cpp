@@ -113,9 +113,42 @@ void Game::loadFromFile(const std::string& filename)
 
 void Game::start()
 {
-    loadFromFile("gamedata.txt");
+    std::string filename = "BarnBoss.txt";
 
     std::println("=== Welcome to Barn Boss ===");
+
+     std::ifstream checkFile(filename);
+     char dummyChar;
+
+     if (checkFile.is_open() && checkFile.get(dummyChar))
+     {
+         std::println("A saved game was found. What would you like to do?");
+         std::println("1. Continue (Load Game)");
+         std::println("2. Start New Game");
+         std::print("> ");
+
+         std::string choice;
+         std::getline(std::cin, choice);
+
+         if (choice == "1")
+         {
+             checkFile.close();
+             loadFromFile(filename);
+             std::println("Game loaded successfully!");
+         }
+         else
+         {
+             checkFile.close();
+             std::ofstream clearFile(filename, std::ios::trunc);
+             std::println("Starting a fresh new game...");
+         }
+     }
+
+     else
+     {
+         checkFile.close();
+         std::println("No saved game found. Starting a fresh new game...");
+     }
 
     setupCommands();
 
@@ -152,7 +185,7 @@ void Game::start()
         }
     }
 
-    saveToFile("gamedata.txt");
+    saveToFile("BarnBoss.txt");
 }
 
 void Game::stop()
