@@ -15,6 +15,7 @@
 #include "LoginCommand.h"
 #include "LogoutCommand.h"
 #include "PrintBarnCommand.h"
+#include "PrintFarmCommand.h"
 #include "PrintMarketCommand.h"
 #include "ProfileInfoCommand.h"
 #include "RegisterCommand.h"
@@ -166,6 +167,7 @@ void Game::setupCommands()
     commands["login"] = std::make_unique<LoginCommand>(*this);
     commands["logout"] = std::make_unique<LogoutCommand>(*this);
     commands["printBarn"] = std::make_unique<PrintBarnCommand>(*this);
+    commands["printFarm"] = std::make_unique<PrintFarmCommand>(*this);
     commands["changePassword"] = std::make_unique<ChangePasswordCommand>(*this);
     commands["sowPlant"] = std::make_unique<SowPlantCommand>(*this);
     commands["addAnimal"] = std::make_unique<AddAnimalCommand>(*this);
