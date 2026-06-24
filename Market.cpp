@@ -24,8 +24,8 @@ void Market::printCatalogue() const
 
 	for (const auto& [product, item] : marketCatalogue)
 	{
-		std::cout << toString(product) <<  "   Quantity: " << item.getQuantity() <<  
-			"   Price: " << item.getPrice() << std::endl;
+		std::cout << getProductId(product) << " " << toString(product) <<  "   Quantity: " << 
+			item.getQuantity() << "   Price: " << item.getPrice() << std::endl;
 	}
 }
 
