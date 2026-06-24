@@ -82,14 +82,14 @@ void Player::sowPlant(size_t seedId)
 {
 	PossibleProducts seedType = getProductType(seedId);
 
-	if (farm.isSeedSowed(seedType, barn))
+	if (!farm.isSeedSowed(seedType, barn))
 	{
-		barn.removeProduct(seedType, 1);
-		farm.pushPlant(Plant(seedType));
-		std::println("Seed planted successfully!");
-		farm.advanceCycle();
+		return;
 	}
 
+	barn.removeProduct(seedType, 1);
+	farm.pushPlant(Plant(seedType));
+	std::println("Seed planted successfully!");
 	this->completeTurn();
 }
 
@@ -97,14 +97,14 @@ void Player::addAnimal(size_t animalId)
 {
 	PossibleProducts animalType = getProductType(animalId);
 
-	if (farm.isAnimalAdded(animalType, barn))
+	if (!farm.isAnimalAdded(animalType, barn))
 	{
-		barn.removeProduct(animalType, 1);
-		farm.pushAnimal(Animal(animalType));
-		std::println("Animal added successfully!");
-		farm.advanceCycle();
+		return;
 	}
 
+	barn.removeProduct(animalType, 1);
+	farm.pushAnimal(Animal(animalType));
+	std::println("Animal added successfully!");
 	this->completeTurn();
 }
 
